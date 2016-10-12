@@ -1,13 +1,35 @@
-h2 {
-}
 p {
-  color:gray;
+  color:white;
   font-size:20px;
 }
 #myphoto {
   border-radius:50%;
 }
-body {
+body{
   font-family:Monospace;
+  color:white;
+  background-color: black;
+  padding-top: 65px;
 }
 
+.white-text{
+  color:white;
+}
+
+.text-center{
+  color:white;
+}
+
+canvas{
+	top:0;
+	left:0;
+  position:fixed;
+  z-index:-1;
+  width:100%;
+  height:100%;
+  margin: 0px;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
