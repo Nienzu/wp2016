@@ -1,0 +1,29 @@
+.user_menu {
+  padding: 7px 14px; }
+  .user_menu .user_options {
+    background-color: white;
+    border: 1px solid #5b6770;
+    z-index: 100001;
+    text-align: left;
+    white-space: nowrap;
+    position: absolute;
+    right: -14px;
+    top: 7px;
+    padding: 0; }
+    .user_menu .user_options a {
+      display: block;
+      padding: 10px;
+      font-family: "Gotham 5r", sans-serif;
+      color: #5b6770;
+      transition: background-color 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out;
+      -moz-transition: background-color 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out;
+      -webkit-transition: background-color 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out;
+      -o-transition: background-color 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out; }
+    .user_menu .user_options a:hover {
+      background-color: #e7e8ea;
+      color: #5b6770;
+      text-decoration: none; }
+    .user_menu .user_options a + a {
+      border-top: 1px solid #5b6770; }
+
+/*# sourceMappingURL=user-menu.css.map */

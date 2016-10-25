@@ -1,0 +1,39 @@
+<html>
+
+  <style>
+    body{
+      margin:0;
+      padding:0;
+    }
+    canvas{
+      position:absolute;
+      left:0;
+      top:0;
+      z-index:-1;
+    }
+    div{
+      position:absolute;
+      z-index:0;
+      left:12px;
+      top:10px;
+    }
+  </style>
+  <body>
+
+    <canvas id="myCanvas" width="600" height="600" style="border:1px solid #c3c3c3;">
+      Your browser does not support the canvas element.
+    </canvas>
+    <div>hello is floating div</div>
+
+    <script type="text/javascript">
+      var c=document.getElementById("myCanvas");
+      var ctx=c.getContext("2d");
+      var grd=ctx.createLinearGradient(0,0,600,600);
+      grd.addColorStop(0,"#FF0000");
+      grd.addColorStop(1,"#00FF00");
+      ctx.fillStyle=grd;
+      ctx.fillRect(0,0,600,600);
+    </script>
+
+  </body>
+</html>
