@@ -6,7 +6,7 @@ app.use(express.static('public'));
 
 app.get('/',(req,res)=>
 		{
-			fs.readFile('./show-graph.html','utf8',(err,html)=>
+			fs.readFile('./time.html','utf8',(err,html)=>
 					{
 						res.send(html);
 					});
