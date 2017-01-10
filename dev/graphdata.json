@@ -1,0 +1,65 @@
+{
+    "0": {
+        "content": "HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as <img /> and <input /> introduce content into the page directly. Others such as <p>...</p> surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.",
+        "start_time": 1483897509407,
+        "elapsed_time": 10,
+        "url": "https://en.wikipedia.org/wiki/HTML",
+        "type": "mousesel",
+        "keywords": [
+            "such",
+            "other",
+            "tags",
+            "html",
+            "text",
+            "lists",
+            "quotes",
+            "links",
+            "headings",
+            "paragraphs"
+        ],
+        "top_keyword": "such",
+        "relatives": 2
+    },
+    "1": {
+        "content": "HTML can embed programs written in a scripting language such as JavaScript which affect the behavior and content of web pages. Inclusion of CSS defines the look and layout of content. The World Wide Web Consortium (W3C), maintainer of both the HTML and the CSS standards, has encouraged the use of CSS over explicit presentational HTML since 1997.[2]",
+        "start_time": 1483897545758,
+        "elapsed_time": 10,
+        "url": "https://en.wikipedia.org/wiki/HTML",
+        "type": "mousesel",
+        "keywords": [
+            "css",
+            "web",
+            "content",
+            "html",
+            "w3c)",
+            "maintainer",
+            "world",
+            "wide",
+            "consortium",
+            "both"
+        ],
+        "top_keyword": "css",
+        "relatives": 2
+    },
+    "2": {
+        "content": "HTML is a markup language that web browsers use to interpret and compose text, images, and other material into visual or audible web pages. Default characteristics for every item of HTML markup are defined in the browser, and these characteristics can be altered or enhanced by the web page designer's additional use of CSS. Many of the text elements are found in the 1988 ISO technical report TR 9537 Techniques for using SGML, which in turn covers the features of early text formatting languages such as that used by the RUNOFF command developed in the early 1960s for the CTSS (Compatible Time-Sharing System) operating system: these formatting commands were derived from the commands used by typesetters to manually format documents. However, the SGML concept of generalized markup is based on elements (nested annotated ranges with attributes) rather than merely print effects, with also the separation of structure and markup; HTML has been progressively moved in this direction with CSS.",
+        "start_time": 1483897560036,
+        "elapsed_time": 10,
+        "url": "https://en.wikipedia.org/wiki/HTML",
+        "type": "mousesel",
+        "keywords": [
+            "markup",
+            "web",
+            "text",
+            "use",
+            "css",
+            "sgml",
+            "elements",
+            "system",
+            "characteristics",
+            "visual"
+        ],
+        "top_keyword": "markup",
+        "relatives": 2
+    }
+}

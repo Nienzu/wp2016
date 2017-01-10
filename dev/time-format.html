@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+	.axis text {
+		font: 10px sans-serif;
+	}
+
+	.axis line,
+	.axis path {
+		fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+	.clip{
+		fill:lightyellow;
+	}
+
+</style>
+<body>
+</body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+	var margin = {top: 40, right: 40, bottom: 40, left: 40},
+	width = 1240 - margin.left - margin.right,
+	height = 900 - margin.top - margin.bottom;
+
+	var dates = d3.scaleTime()
+.domain([new Date(2016,0,1),new Date(2016,2,28)])
+	.rangeRound([0,width]);
+	var format = d3.timeFormat("%B");
+	var svg = d3.select("body")
+	.append("svg")
+	.attr("width",width)
+	.attr("height",height)
+	.attr("style","background-color:lightgray;");
+
+	var clip = d3.select("svg")
+	.append("g")
+	.attr("id","clip")
+	.append("rect")
+	.attr("class","clip")
+	.attr("width",50)
+	.attr("height",50)
+	.attr("transform","translate("+width/2+","+height/2+")");
+
+	svg.append("text")
+	.text("aaaa")
+	.attr("y",300)
+	.attr("x",300);
+	var count = 1000;
+	svg
+	.on("mousemove",function(){d3.select("text").text(d3.event.x+","+d3.event.y+","+count);count+=1000})
+
+	clip
+.call(d3.drag()
+		.on("start",dragstarted)
+		.on("drag",dragged)
+		.on("end",dragended));
+	var noded = svg.append("g").attr("id","node");
+	noded
+	.attr("transform","translate("+(width/2+100)+","+(height/2+100)+")")
+	.append("rect")
+	.attr("class","clip")
+	.attr("width",50)
+	.attr("height",50)
+	noded.append("text");
+	noded.select("text").text("Try Edit Me > w <")
+	.attr("class","text");
+
+	var box =noded.select("text").node().getBBox();
+
+	noded.select("rect").attr("width", box.width)
+	.attr("height", box.height)
+	.attr("x",box.x)
+	.attr("y",box.y);
+
+	noded
+	.call(d3.drag()
+		.on("start",dragstarted)
+		.on("drag",dragged)
+		.on("end",dragended));
+
+	var x = d3.scaleLinear()
+.rangeRound([0, width])
+	.domain([0,100]);
+
+	var g=svg.append("g")
+.data(dates.ticks(10))
+	.attr("class", "path")
+	.attr("transform", "translate( 0 , "+ margin.top + ")")	
+	.call(d3.axisBottom(dates).ticks(10,"%b %d"));
+
+	function dragstarted(d){
+	}
+function dragged(){
+	d3.select(this)
+		.attr("transform","translate("+(d3.event.x-d3.select(this).attr("width")/2)+","+(d3.event.y-d3.select(this).attr("height")/2)+")");
+}
+function dragended(){
+}
+
+
+
+
+</script>
