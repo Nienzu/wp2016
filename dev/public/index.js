@@ -7,6 +7,7 @@ var width = window.innerWidth,
 	radius = (width+height)/2/100;
 var nodeStrokeFill="lightblue";
 var nodeStrokeColor="#fff";
+var linkStrokeColor = "#dad";
 var linkStrokeWidth = radius/2;
 var simulation = d3.forceSimulation()
 	.force("charge", d3.forceManyBody().strength(-1000))
@@ -14,22 +15,38 @@ var simulation = d3.forceSimulation()
 	.force("x", d3.forceX(width/2))
 	.force("y", d3.forceY(height/2));
 
+	// Pop up information for content or relation
+	var divPop = d3.select("body")
+	.append("div")	
+	.attr("class", "tooltip ")				
+	.style("opacity", 0);
+
+	var selectNode;
+
 	var svg = d3.select("body").append("svg")
 	.attr("width", width)
-	.attr("height", height);
+	.attr("height", height)
+	.on("mousedown",function(){
+		selectNode = null;
+		updateLinks(-1);
+	});
+
+	var bodyS =d3.select("body")
+		.on("keydown",nodeKeyDown);
+
 	d3.json("graphmap.json",function(err,myJson){
-		if(err){
+			if(err){
 			console.log("Fail open file.");
-		}
-		for(var key in myJson){
+			}
+			for(var key in myJson){
 			var tempObject;
 			tempObject = myJson[key];
 			tempObject.id = key;
 			myInput[myInput.length]=tempObject;
-		}
-		//using the basic way to solve sync/async problem 
-	updatePage();
-	});
+			}
+			//using the basic way to solve sync/async problem 
+			updatePage();
+			});
 
 
 function updatePage(){
@@ -54,9 +71,25 @@ function updatePage(){
 
 
 	node.append("circle")
-		.attr("r",radius )
+	.attr("r",radius )
 		.style("fill", function(d) { return nodeStrokeFill; })
-		.style("stroke", function(d) { return nodeStrokeColor; });
+		.style("stroke", function(d) { return nodeStrokeColor; })
+		.on("mouseover", function(d){
+			divPop
+				.transition()
+				.duration(900)
+				.style("opacity",.9);
+			divPop
+				.html("check info")
+				.style("top", (d3.event.pageY) + "px")
+				.style("left", (d3.event.pageX) + "px");
+
+		})
+		.on("mouseout",function(d){
+			divPop.transition()
+				.duration(500)
+				.style("opacity",0);
+		});
 
 	node.append("text")
 		.attr("x",12)
@@ -74,6 +107,31 @@ function updatePage(){
 	simulation
 		.on("tick", tick);
 
+}
+
+function nodeKeyDown(){
+	if(d3.event.keyCode === 68 && selectNode !== null){
+		myInput.splice(myInput.indexOf(selectNode),1);
+		var i=0;
+		for(var index = myLink.length-1; index >= 0; index--){
+			if((myLink[index].source.id === selectNode.id)||(myLink[index].target.id === selectNode.id)){
+				myLink.splice(index,1);
+			}
+		}
+	}
+	restart();
+}
+
+function restart(){
+	node = node.data(myInput);
+	node.exit().remove();
+	node.select("text").text(function(d){return d.id;})
+
+	link = link.data(myLink);
+	link.exit().remove();
+	
+	updateLinks(null);
+	selectNode=null;
 }
 
 function tick() {
@@ -105,17 +163,25 @@ function dragended(d) {
 }
 
 function updateLinks(targetPoint){
-	link.style("stroke",function(d){
-		if(d.target.id === targetPoint || d.source.id === targetPoint){
-			return "#999";
-		}
-		else{
-			return "transparent";
-		}
+	if(targetPoint === -1){
+	link.style("stroke", function(d){
+		return linkStrokeColor;
 	});
+	}
+	else {
+	link.style("stroke",function(d){
+			if(d.target.id === targetPoint || d.source.id === targetPoint){
+			return "#999";
+			}
+			else{
+			return "transparent";
+			}
+			});
+		}
 }
 
 function clicked(d){
+	selectNode = d;
 	updateLinks(d.id);
 }
 function createLinks(nodeInput){

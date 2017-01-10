@@ -1,89 +1,101 @@
 text {
-  font: 10px sans-serif;
+font: 10px sans-serif;
 }
 .node circle {
-  stroke-width: 10px;
+	stroke-width: 10px;
 }
 
 .line  {
-  stroke:#dad;
 }
 
+div.tooltip {	
+position: absolute;			
+		  text-align: center;			
+padding: 2px;				
+font: 12px sans-serif;		
+background: lightsteelblue;	
+border: 0px;		
+		border-radius: 8px;			
+		pointer-events: none;			
+		z-index:100;
+}
+
+
 #sideArea{
-  position:fixed;
-  top:0px;
-  right:0px;
-  width:225px;
-  height: 100%;
-  background-color: gray;
-  padding:
+position:fixed;
+top:0px;
+right:0px;
+width:225px;
+height: 100%;
+		background-color: gray;
+padding:
 }
 
 svg {
-  position:fixed;
-  top:0px;
-  left:0px;
+position:fixed;
+top:0px;
+left:0px;
 }
 #title{
-  font-size:2.5em;
-  text-align: center;
-  border-bottom: 1px solid lightgray;
-  margin: 5px;
+	font-size:2.5em;
+	text-align: center;
+	border-bottom: 1px solid lightgray;
+margin: 5px;
 }
 
 #related{
-  list-style-type: none;
-  border-bottom: 1px solid lightgray;
-  margin:5px;
-  padding:5px;
-  text-align: center;
+	list-style-type: none;
+	border-bottom: 1px solid lightgray;
+margin:5px;
+padding:5px;
+		text-align: center;
 }
 #related li:after{
-  content:" | ";
-  color : lightgray;
+content:" | ";
+color : lightgray;
 }
 #related li:last-child:after{
-  content:"";
+content:"";
 
 }
 #related li{
-  display: inline-block;
+display: inline-block;
 }
 
 #url{
-  list-style-type: none;
-  border-bottom: 1px solid lightgray;
-  margin:5px;
-  padding:5px;
-  text-align: center;
+	list-style-type: none;
+	border-bottom: 1px solid lightgray;
+margin:5px;
+padding:5px;
+		text-align: center;
 }
 
 #note{
-  font-size:1em;
-  text-align: justify;
-  border-bottom: 1px solid lightgray;
-  margin: 5px;
+	font-size:1em;
+	text-align: justify;
+	border-bottom: 1px solid lightgray;
+margin: 5px;
 
 }
 
 #browse-history{
-  display: block;
-  margin: auto;
-  background-color: transparent;
-  border: 1px solid lightgray;
-  color: lightgray;
-  border-radius: 5px;
-  margin-top: 10px;
-  font-size: 1.1em;
+display: block;
+margin: auto;
+		background-color: transparent;
+border: 1px solid lightgray;
+color: lightgray;
+	   border-radius: 5px;
+	   margin-top: 10px;
+	   font-size: 1.1em;
 }
 
 #overlay{
-  left: 0px;
-  top: 0px;
-  position:fixed;
-  display: none;
-  z-index: 2147483647;
-  height:100%;
-  width:799px;
-  background-color: lightgray;
+left: 0px;
+top: 0px;
+position:fixed;
+display: none;
+		 z-index: 2147483647;
+height:100%;
+width:799px;
+	  background-color: lightgray;
 }
